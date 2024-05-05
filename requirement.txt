@@ -1,3 +1,4 @@
+pip freeze > requirements.txt
 streamlit==0.89.0
 PyPDF2==1.26.0
 langchain==0.1.0
