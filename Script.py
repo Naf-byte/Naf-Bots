@@ -61,14 +61,7 @@ def get_conversational_chain(vector_store):
 
 # Function to handle user input and display chat messages
 def user_input(user_question):
-    if user_question.lower() == "who created you?" or "who made you?" or "who is your founder?":
-        st.markdown(
-            f"<div style='background-color: #32CD32; color: black; padding: 10px; border-radius: 10px; margin: 10px;'>"
-            f" **{{Naf-Chat}}** :  My creator is Nafay Ur Rehman"
-            "</div>",
-            unsafe_allow_html=True
-        )
-    elif user_question.lower() == "who is nafay" or "who is nafay ur rehman" or "who is nafay?" or "who is nafay ur rehman?":
+    if user_question.lower() == "who is nafay" or "who is nafay ur rehman" or "who is nafay?" or "who is nafay ur rehman?":
         st.markdown(
             f"<div style='background-color: #32CD32; color: black; padding: 10px; border-radius: 10px; margin: 10px;'>"
             f" **{{Naf-Chat}}** :  He is the Founder of me, He used different Generative AI techniques to create me"
