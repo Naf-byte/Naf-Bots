@@ -4,7 +4,6 @@ import collections.abc
 # except ImportError:
 #     from collections import Iterable
 from collections.abc import Iterable
-import streamlit as st
 # Manually create aliases for the classes expected by the third-party library
 collections.Iterable = collections.abc.Iterable
 collections.Mapping = collections.abc.Mapping
@@ -12,6 +11,7 @@ collections.MutableSet = collections.abc.MutableSet
 collections.MutableMapping = collections.abc.MutableMapping
 # Now import the third-party library that was causing the issue
 import hyper
+import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import GooglePalmEmbeddings
