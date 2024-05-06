@@ -1,4 +1,12 @@
 import streamlit as st
+import collections.abc
+# Manually create aliases for the classes expected by the third-party library
+collections.Iterable = collections.abc.Iterable
+collections.Mapping = collections.abc.Mapping
+collections.MutableSet = collections.abc.MutableSet
+collections.MutableMapping = collections.abc.MutableMapping
+# Now import the third-party library that was causing the issue
+import hyper
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import GooglePalmEmbeddings
@@ -8,6 +16,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 import os
 import time
+
 
 os.environ['GOOGLE_API_KEY'] = 'AIzaSyBZP1trD9aesCfXyiV5vQClnbKsVXlM89s'
 
