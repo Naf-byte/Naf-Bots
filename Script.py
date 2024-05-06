@@ -33,7 +33,7 @@ collections.MutableMapping = collections.abc.MutableMapping
 import streamlit as st
 import hyper
 from PyPDF2 import PdfReader
-from PyPDF2.reader import PdfReader
+# from PyPDF2.reader import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import GooglePalmEmbeddings
 from langchain.llms import GooglePalm
