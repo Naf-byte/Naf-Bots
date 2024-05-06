@@ -1,5 +1,6 @@
 import streamlit as st
 import collections.abc
+from collections.abc import Iterable
 # Manually create aliases for the classes expected by the third-party library
 collections.Iterable = collections.abc.Iterable
 collections.Mapping = collections.abc.Mapping
