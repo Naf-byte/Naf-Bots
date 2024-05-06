@@ -60,16 +60,16 @@ def get_conversational_chain(vector_store):
 
 
 # Function to handle user input and display chat messages
-def user_input(user_question):
-    if user_question.lower() == "who is nafay" or "who is nafay ur rehman" or "who is nafay?" or "who is nafay ur rehman?":
-        st.markdown(
-            f"<div style='background-color: #32CD32; color: black; padding: 10px; border-radius: 10px; margin: 10px;'>"
-            f" **{{Naf-Chat}}** :  He is the Founder of me, He used different Generative AI techniques to create me"
-            f" **{{Naf-Chat}}** :  Why are you asking me?"
-            "</div>",
-            unsafe_allow_html=True
-        )
-        return
+# def user_input(user_question):
+#     if user_question.lower() == "who is nafay" or "who is nafay ur rehman" or "who is nafay?" or "who is nafay ur rehman?":
+#         st.markdown(
+#             f"<div style='background-color: #32CD32; color: black; padding: 10px; border-radius: 10px; margin: 10px;'>"
+#             f" **{{Naf-Chat}}** :  He is the Founder of me, He used different Generative AI techniques to create me"
+#             f" **{{Naf-Chat}}** :  Why are you asking me?"
+#             "</div>",
+#             unsafe_allow_html=True
+#         )
+#         return
 
     with st.spinner("Generating response..."):
         time.sleep(1)  # Reduce spinner time to 1 second
