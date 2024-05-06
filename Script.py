@@ -121,9 +121,9 @@ st.write(
     """
     <div style='text-align:center;'>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <img src='https://cdn.dribbble.com/userupload/10543014/file/original-4703d0ba72b72f87fa49a618a24a1f6d.gif' alt='Naf-Chat Bot' style='width: 100px; height: 100px; border-radius: 50%; margin-right: 10px;'/>
+            # <img src='https://cdn.dribbble.com/userupload/10543014/file/original-4703d0ba72b72f87fa49a618a24a1f6d.gif' alt='Naf-Chat Bot' style='width: 100px; height: 100px; border-radius: 50%; margin-right: 10px;'/>
             <h1>Naf-Chat: Chat with Multiple PDF Files </h1>
-            <img src='https://cdn.dribbble.com/userupload/10543014/file/original-4703d0ba72b72f87fa49a618a24a1f6d.gif' alt='Naf-Chat Bot' style='width: 100px; height: 100px; border-radius: 50%; margin-left: 10px;'/>
+            # <img src='https://cdn.dribbble.com/userupload/10543014/file/original-4703d0ba72b72f87fa49a618a24a1f6d.gif' alt='Naf-Chat Bot' style='width: 100px; height: 100px; border-radius: 50%; margin-left: 10px;'/>
         </div>
         <h2>Welcome to Naf-Chat!</h2>
         <p>Ask me anything about your PDF files, and I'll do my best to help you out.</p>
