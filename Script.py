@@ -1,10 +1,10 @@
-import streamlit as st
 import collections.abc
-try:
-    from collections.abc import Iterable
-except ImportError:
-    from collections import Iterable
-# from collections.abc import Iterable
+# try:
+#     from collections.abc import Iterable
+# except ImportError:
+#     from collections import Iterable
+from collections.abc import Iterable
+import streamlit as st
 # Manually create aliases for the classes expected by the third-party library
 collections.Iterable = collections.abc.Iterable
 collections.Mapping = collections.abc.Mapping
