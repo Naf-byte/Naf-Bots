@@ -60,6 +60,15 @@ def get_conversational_chain(vector_store):
 
 # Function to handle user input and display chat messages
 def user_input(user_question):
+    conversation = st.session_state.conversation
+
+    if conversation is None:
+        st.error("""
+        Conversation chain not initialized!! \n
+        Please upload PDF files first by clicking arrow button on the Top left corner
+        """)
+        return
+        
     with st.spinner("Generating response..."):
         time.sleep(1)  # Reduce spinner time to 1 second
         response = st.session_state.conversation({'question': user_question})
