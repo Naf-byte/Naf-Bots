@@ -72,7 +72,7 @@ def user_input(user_question):
             if i % 2 == 0:
                 st.markdown(
                     f"<div style='background-color: #32CD32; color: black; padding: 10px; border-radius: 10px; margin: 10px;'>"
-                    f" **{{Naf-Chat}}** :  {message.content}"
+                    f" [Me]🤖 :  {message.content}"
                     "</div>",
                     unsafe_allow_html=True
                 )
@@ -80,7 +80,7 @@ def user_input(user_question):
                 user_response = message.content
                 st.markdown(
                     f"<div style='background-color: #00008B; color: white; padding: 10px; border-radius: 10px; margin: 10px;'>"
-                    f" **{{You}}** :  {user_response}"
+                    f" [You]👱 :  {user_response}"
                     "</div>",
                     unsafe_allow_html=True
                 )
