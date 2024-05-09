@@ -1,1 +1,5 @@
-
+[theme]
+primaryColor="#0B5345"  # Royal Blue
+backgroundColor="#0B5345"  # White
+secondaryBackgroundColor="#000000"  # Black
+textColor="#FFFFFF"  # Black
