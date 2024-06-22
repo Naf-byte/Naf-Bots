@@ -5,4 +5,3 @@ openpyxl>=2.5.8
 google-generativeai
 faiss-cpu
 langchain==0.2.5
-langchain-community==0.0.38
