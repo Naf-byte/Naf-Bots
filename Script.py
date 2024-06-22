@@ -6,7 +6,6 @@ from langchain_community.llms import GooglePalm
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 
-# Function to read and extract text from PDF
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -15,18 +14,15 @@ def get_pdf_text(pdf_docs):
             text += page.extract_text()
     return text
 
-# Function to split text into chunks
 def get_text_chunks(text):
     # Implementation for splitting text into chunks
     pass
 
-# Function to create vector store from text chunks
 def get_vector_store(text_chunks):
     embeddings = GooglePalmEmbeddings()
     vector_store = FAISS.from_texts(text_chunks, embeddings)
     return vector_store
 
-# Function to create the conversational chain
 def get_conversational_chain(vector_store):
     llm = GooglePalm()
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
