@@ -4,4 +4,4 @@ hyper==0.7.0
 openpyxl>=2.5.8
 google-generativeai
 faiss-cpu
-langchain==0.2.5
+langchain-community==0.2.5
