@@ -12,7 +12,7 @@ import os
 
 # Load environment variables
 load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=os.getenv("AIzaSyCotlHqchfsY1nhLEcT3H4Pg9uLckrMOtU"))
 
 question_answer_history = []
 
