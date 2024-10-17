@@ -1,4 +1,15 @@
-import streamlit as st
+import collections.abc
+# try:
+#     from collections.abc import Iterable
+# except ImportError:
+#     from collections import Iterable
+from collections.abc import Iterable
+# Manually create aliases for the classes expected by the third-party library
+collections.Iterable = collections.abc.Iterable
+collections.Mapping = collections.abc.Mapping
+collections.MutableSet = collections.abc.MutableSet
+collections.MutableMapping = collections.abc.MutableMapping
+# Now import the third-party library that was causing the issue
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
