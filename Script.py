@@ -1,10 +1,6 @@
 import collections.abc
-# try:
-#     from collections.abc import Iterable
-# except ImportError:
-#     from collections import Iterable
+# For backward compatibility with some libraries
 from collections.abc import Iterable
-# Manually create aliases for the classes expected by the third-party library
 collections.Iterable = collections.abc.Iterable
 collections.Mapping = collections.abc.Mapping
 collections.MutableSet = collections.abc.MutableSet
@@ -25,8 +21,9 @@ import streamlit as st
 
 # Load environment variables
 load_dotenv()
-# Configure using the GEMINI_API_KEY from your .env file
-genai.configure(api_key=os.getenv("AIzaSyCotlHqchfsY1nhLEcT3H4Pg9uLckrMOtU"))
+# Use the environment variable "GOOGLE_API_KEY" for both chat configuration and embeddings
+api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=api_key)
 
 question_answer_history = []
 
@@ -49,7 +46,7 @@ def get_text_chunks(text):
 def get_vector_store(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001",
-        google_api_key=os.getenv("GEMINI_API_KEY")
+        google_api_key=api_key
     )
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
@@ -72,13 +69,14 @@ def get_conversational_chain():
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001",
-        google_api_key=os.getenv("GEMINI_API_KEY")
+        google_api_key=api_key
     )
     try:
         new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
     except Exception as e:
         st.error(f"Error loading FAISS index: {e}")
         return
+
     docs = new_db.similarity_search(user_question)
     chain = get_conversational_chain()
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
@@ -94,7 +92,7 @@ def main():
     user_question = st.text_input("Ask a Question from the PDF Files uploaded .. ✍️📝")
     if user_question:
         user_input(user_question)
-        # Display the conversation history
+        # Display conversation history
         for i, pair in enumerate(question_answer_history, start=1):
             st.write(f"**Question {i}:** {pair['question']}")
             st.write(f"**Answer:** {pair['answer']}")
@@ -126,6 +124,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 #import collections.abc
