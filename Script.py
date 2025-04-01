@@ -115,8 +115,8 @@ def main():
                 st.success("Processing Completed!")
 
         st.write("---")
-        st.image("img/gkj.jpg")
-        st.write("Lytical Agent created by @ CodeLytical")
+        # st.image("img/gkj.jpg")
+        # st.write("Lytical Agent created by @ CodeLytical")
 
     # Footer with credits
     st.markdown(
