@@ -1,12 +1,10 @@
 import collections.abc
-# For backward compatibility with some libraries
 from collections.abc import Iterable
 collections.Iterable = collections.abc.Iterable
 collections.Mapping = collections.abc.Mapping
 collections.MutableSet = collections.abc.MutableSet
 collections.MutableMapping = collections.abc.MutableMapping
 
-# Import third-party libraries
 from PyPDF2 import PdfReader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -21,13 +19,12 @@ import streamlit as st
 
 # Load environment variables
 load_dotenv()
-# Use the environment variable "GOOGLE_API_KEY" for both chat configuration and embeddings
+# Use the environment variable "GOOGLE_API_KEY" for both configuring generativeai and embeddings.
 api_key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=api_key)
 
 question_answer_history = []
 
-# Function to extract text from PDF files
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -36,13 +33,11 @@ def get_pdf_text(pdf_docs):
             text += page.extract_text()
     return text
 
-# Function to split the extracted text into manageable chunks
 def get_text_chunks(text):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=50000, chunk_overlap=1000)
     chunks = text_splitter.split_text(text)
     return chunks
 
-# Function to create and save the FAISS vector store
 def get_vector_store(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001",
@@ -51,7 +46,6 @@ def get_vector_store(text_chunks):
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
 
-# Define the conversational LLM chain
 def get_conversational_chain():
     prompt_template = """
     Answer the question as detailed as possible from the provided context. If the answer is not in
@@ -60,12 +54,12 @@ def get_conversational_chain():
     Question:\n{question}\n
     Answer:
     """
+    # Change model name from "gemini-pro" to "gemini" (or another valid model id as per your API documentation)
     model = ChatGoogleGenerativeAI(model="gemini", temperature=0.3)
     prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
     return chain
 
-# Handle user input and display chat results
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001",
@@ -83,22 +77,18 @@ def user_input(user_question):
     question_answer_history.append({"question": user_question, "answer": response["output_text"]})
     st.write(f"**Response:** {response['output_text']}")
 
-# Main application layout
 def main():
     st.set_page_config("Lytical Multi PDF Agent", page_icon=":scroll:")
     st.header("📚 Lytical Agent 🤖")
 
-    # User input section
     user_question = st.text_input("Ask a Question from the PDF Files uploaded .. ✍️📝")
     if user_question:
         user_input(user_question)
-        # Display conversation history
         for i, pair in enumerate(question_answer_history, start=1):
             st.write(f"**Question {i}:** {pair['question']}")
             st.write(f"**Answer:** {pair['answer']}")
             st.write("---")
 
-    # Sidebar with settings and PDF upload
     with st.sidebar:
         st.write("---")
         st.title("📁 PDF File's Section")
@@ -112,7 +102,6 @@ def main():
                 st.success("Processing Completed!")
         st.write("---")
 
-    # Footer with credits
     st.markdown(
         """
         <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #0E1117; padding: 15px; text-align: center;">
