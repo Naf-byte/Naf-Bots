@@ -4,5 +4,4 @@ openpyxl>=2.5.8
 google-generativeai
 faiss-cpu
 langchain-community==0.2.5
-langchain-google-genai
-
+python-dotenv
