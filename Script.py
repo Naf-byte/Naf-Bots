@@ -101,7 +101,7 @@ def main():
 
     # Sidebar with settings and PDF upload
     with st.sidebar:
-        st.image("img/Robot.jpg")
+        # st.image("img/Robot.jpg")
         st.write("---")
         st.title("📁 PDF File's Section")
         pdf_docs = st.file_uploader("Upload your PDF Files & Click on Submit & Process Button", 
